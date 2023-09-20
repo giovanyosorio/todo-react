@@ -12,7 +12,15 @@ const defaultTodos = [
     {  text: "api de shopífy", completed: false  },
     {  text: "api de platzi", completed: false  }
 ]
+
+
+
 function App() {
+
+
+  const [searchValue, setSearchValue]=React.useState("")
+  console.log("los usuarios buscan todos de "+ searchValue);
+  
   return (
     <React.Fragment>
       <TodoCounter completed={16} total={25}/>
