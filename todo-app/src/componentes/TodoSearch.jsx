@@ -2,7 +2,9 @@ import React from 'react'
 import "../styles/TodoSearch.css"
 
 
- function TodoSearch() {
+ function TodoSearch({
+  searchValue,setSearchValue
+ }) {
 
   return (
     <div>
