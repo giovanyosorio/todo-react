@@ -23,13 +23,37 @@ function App() {
   const [searchValue, setSearchValue] = React.useState("")
   const completedTodos = todos.filter((item) => !!item.completed).length
   const total = todos.length
+  console.log("total"+total);
+  console.log("completedTodos"+completedTodos);
   const searchedTodos = todos.filter((item) => { 
     const todoText=item.text.toLowerCase()
     const searchText=searchValue.toLocaleLowerCase()
-
     return todoText.includes(searchText) 
   })
+
+  const completeTodo=(text)=>{
+    const newTodos=[...todos]
+    const todoIndex= newTodos.findIndex(
+      (todo)=>todo.text==text
+    )
+    newTodos[todoIndex].completed=true
+    console.log("haz completado"+todos.length)
+    SetTodos(newTodos)
+  }
+  const deleteTodo=(text)=>{
+    const newTodos=[...todos]
+    const todoIndex= newTodos.findIndex(
+      (todo)=>todo.text==text
+    )
+    newTodos.splice(todoIndex,1)
+    SetTodos(newTodos)
+    console.log(newTodos)
+  }
+  
   console.log(searchedTodos);
+
+
+
   return (
     <React.Fragment>
       <TodoCounter completed={completedTodos} total={total} />
@@ -40,7 +64,11 @@ function App() {
         {searchedTodos.map((todo) =>
           <TodoItem key={todo.text}
             text={todo.text}
-            completed={todo.completed} />
+            completed={todo.completed} 
+            onComplete={()=>completeTodo(todo.text)}  
+            onDelete={()=>deleteTodo(todo.text)}
+          />
+            
         )}
 
       </TodoList>

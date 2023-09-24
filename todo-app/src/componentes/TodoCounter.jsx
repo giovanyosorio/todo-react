@@ -2,8 +2,10 @@ import React from 'react'
 import "../styles/TodoCounter.css"
   function TodoCounter({completed,total}) {
   return (
-   
-      <h1 >Haz completado {completed} de {total} Todos </h1>
+    total==completed ?
+      <h1 className='TodoCounter'>Felicidades Completaste los todos </h1>
+      :
+      <h1 className='TodoCounter'>Haz completado {completed} de {total} Todos </h1>
 
   )
 }
