@@ -5,7 +5,7 @@ import { TodoList } from './componentes/TodoList';
 import { TodoItem } from './componentes/TodoItem';
 import { TodoButton } from './componentes/TodoButton';
 import React from 'react';
-
+/*
 const defaultTodos = [
   { text: "api de flags", completed: true },
   { text: "api de books", completed: true },
@@ -17,9 +17,22 @@ const defaultTodos = [
 
 
 
-function App() {
+localStorage.setItem("Todos_V1",JSON.stringify(defaultTodos))
 
-  const [todos, SetTodos] = React.useState(defaultTodos)
+localStorage.remoteItem("todos_V1")
+*/
+function App() {
+  const localStorageTodos=localStorage.getItem("Todos_V1")
+  let parsedTodos
+  if(!localStorageTodos){
+    localStorage.setItem("TODOS_V1",JSON.stringify([]))
+    parsedTodos=[]
+  }else{
+    parsedTodos=JSON.parse(localStorageTodos)
+  }
+
+
+  const [todos, SetTodos] = React.useState(parsedTodos)
   const [searchValue, setSearchValue] = React.useState("")
   const completedTodos = todos.filter((item) => !!item.completed).length
   const total = todos.length
@@ -31,6 +44,13 @@ function App() {
     return todoText.includes(searchText) 
   })
 
+  //local storage
+
+  const saveTodos=(newTodos)=>{
+    localStorage.setItem("Todos_V1",JSON.stringify(newTodos))
+    SetTodos(newTodos)
+  }
+
   const completeTodo=(text)=>{
     const newTodos=[...todos]
     const todoIndex= newTodos.findIndex(
@@ -38,7 +58,7 @@ function App() {
     )
     newTodos[todoIndex].completed=true
     console.log("haz completado"+todos.length)
-    SetTodos(newTodos)
+    saveTodos(newTodos)
   }
   const deleteTodo=(text)=>{
     const newTodos=[...todos]
@@ -46,7 +66,7 @@ function App() {
       (todo)=>todo.text==text
     )
     newTodos.splice(todoIndex,1)
-    SetTodos(newTodos)
+    saveTodos(newTodos)
     console.log(newTodos)
   }
   
