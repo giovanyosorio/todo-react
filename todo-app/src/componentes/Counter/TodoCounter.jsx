@@ -1,5 +1,6 @@
 import React from 'react'
-import "../styles/TodoCounter.css"
+//import "../styles/TodoCounter.css"
+import "../../styles/TodoCounter.css"
   function TodoCounter({completed,total}) {
   return (
     total==completed ?

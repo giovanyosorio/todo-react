@@ -1,12 +1,13 @@
 import React from 'react'
-import "../styles/TodoButton.css"
+//import "../styles/TodoButton.css"
+import "../../styles/TodoButton.css"
 function TodoButton(props) {
-  const {className, onClick} = props
+  
   return (
     <div>
       
       <button className='CreateTodoButton'      
-      onClick={onCreate}
+      //onClick={onCreate}
       >+</button>
     </div>
   )

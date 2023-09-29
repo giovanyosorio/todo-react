@@ -1,5 +1,6 @@
 import React from 'react'
-import {TodoIcon} from "./TodoIcon"
+//import {TodoIcon} from "./TodoIcon"
+import {TodoIcon} from "../Icon/TodoIcon"
 import {RxCross1} from 'react-icons/rx'
 
 function DeleteIcon(props) {
