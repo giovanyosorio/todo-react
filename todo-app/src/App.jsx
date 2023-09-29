@@ -1,9 +1,9 @@
 
-import { TodoCounter } from './componentes/TodoCounter';
-import { TodoSearch } from './componentes/TodoSearch';
-import { TodoList } from './componentes/TodoList';
-import { TodoItem } from './componentes/TodoItem';
-import { TodoButton } from './componentes/TodoButton';
+import { TodoCounter } from './componentes/Counter/TodoCounter';
+import { TodoSearch } from './componentes/Search/TodoSearch';
+import { TodoList } from './componentes/List/TodoList';
+import { TodoItem } from './componentes/Item/TodoItem';
+import { TodoButton } from './componentes/Button/TodoButton';
 import React from 'react';
 /*
 const defaultTodos = [
@@ -102,7 +102,14 @@ function App() {
 
       </TodoList>
 
-      <TodoButton />
+      <TodoButton
+        onCreateTodo={(text) => {
+          const newTodos = [...todos]
+          newTodos.push({ text, completed: false })
+          saveTodos(newTodos)
+        }}
+      
+      />
     </React.Fragment>
   );
 }
