@@ -103,12 +103,12 @@ function App() {
       </TodoList>
 
       <TodoButton
-        onCreateTodo={(text) => {
+/*         onCreateTodo={(text) => {
           const newTodos = [...todos]
           newTodos.push({ text, completed: false })
           saveTodos(newTodos)
         }}
-      
+       */
       />
     </React.Fragment>
   );
